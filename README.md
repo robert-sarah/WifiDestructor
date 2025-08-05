@@ -1,256 +1,273 @@
-# 🎣 Phishing Tool Pro v2.0 - BlackEye + CamPhish Enhanced
+# 🎣 ULTIMATE PHISHING TOOL v4.0
 
-## 🚀 Fonctionnalités Avancées
+Interface graphique moderne pour le pentest avancé avec support cross-platform complet.
 
-### ✨ Templates BlackEye
-- **16 sites populaires** : Facebook, Google, Instagram, Netflix, PayPal, Steam, Twitter, WhatsApp, Amazon, Apple ID, Microsoft, LinkedIn, GitHub, Dropbox, Spotify, Discord
-- **Interface réaliste** : Templates identiques aux sites originaux
-- **Catégorisation** : Social, Tech, Finance, Gaming, Entertainment, etc.
+## 🌍 Compatibilité
 
-### 📸 CamPhish - Capture Webcam
-- **Capture automatique** : Photo de la victime via webcam
-- **Stockage sécurisé** : Images sauvegardées dans `/captures/`
-- **Timing intelligent** : Capture après 3 secondes d'accès
+| Système | Statut | Installation |
+|---------|---------|--------------|
+| **Windows** | ✅ 100% | `install.bat` |
+| **Debian/Ubuntu** | ✅ 100% | `bash install.sh` |
+| **macOS** | ✅ 100% | `bash install.sh` |
+| **Arch Linux** | ✅ 100% | `bash install.sh` |
 
-### 🌍 Géolocalisation Avancée
-- **Localisation précise** : Ville, pays, coordonnées GPS
-- **Informations réseau** : IP, ISP, Timezone
-- **Carte interactive** : Visualisation des victimes
+## 🚀 Installation Rapide
 
-### 💻 Détection Système
-- **Navigateur** : Chrome, Firefox, Safari, Edge
-- **Système d'exploitation** : Windows, macOS, Linux, Android, iOS
-- **Appareil** : Desktop, Mobile, Tablet
-- **Résolution écran** : Informations détaillées
-
-### 🎯 Interface Moderne
-- **Design professionnel** : Interface sombre et moderne
-- **Notifications temps réel** : Alertes instantanées
-- **Logs détaillés** : Historique complet des activités
-- **Export avancé** : JSON, CSV, Excel
-
-## 🛠️ Installation
-
-### Prérequis
-- Python 3.7+
-- pip
-- git
-
-### Installation Automatique
-```bash
-# Cloner le repository
-git clone https://github.com/votre-repo/phishing-tool-pro.git
-cd phishing-tool-pro
-
-# Installation automatique
-chmod +x install.sh
-./install.sh
+### Windows
+```cmd
+# Double-cliquez sur install.bat
+# Ou exécutez en ligne de commande:
+install.bat
 ```
 
-### Installation Manuelle
+### Linux/macOS
 ```bash
-# Créer l'environnement virtuel
-python3 -m venv venv
-source venv/bin/activate  # Linux/Mac
-# ou
-venv\Scripts\activate     # Windows
+# Rendre le script exécutable
+chmod +x install.sh
 
-# Installer les dépendances
+# Exécuter l'installation
+bash install.sh
+```
+
+## 📦 Installation Manuelle
+
+### Prérequis
+
+#### Windows
+- Python 3.8+ (https://python.org)
+- pip (inclus avec Python)
+- nmap (https://nmap.org/download.html)
+
+#### Linux (Debian/Ubuntu)
+```bash
+sudo apt-get update
+sudo apt-get install python3 python3-pip python3-venv aircrack-ng nmap masscan
+```
+
+#### macOS
+```bash
+# Installer Homebrew
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# Installer les outils
+brew install python3 aircrack-ng nmap masscan
+```
+
+### Installation Python
+
+1. **Cloner le projet**
+```bash
+git clone <repository-url>
+cd WifiDestructor2
+```
+
+2. **Créer l'environnement virtuel**
+```bash
+python3 -m venv venv
+source venv/bin/activate  # Linux/macOS
+# ou
+venv\Scripts\activate.bat  # Windows
+```
+
+3. **Installer les dépendances**
+```bash
 pip install -r requirements.txt
 ```
 
-## 🚀 Utilisation
+## 🎯 Utilisation
 
 ### Lancement
 ```bash
 # Activer l'environnement virtuel
-source venv/bin/activate
+source venv/bin/activate  # Linux/macOS
+# ou
+venv\Scripts\activate.bat  # Windows
 
-# Lancer l'outil
-python3 phishing_tool.py
+# Lancer l'application
+python ultimate_phishing_gui.py
 ```
 
-### Interface Utilisateur
+### Permissions Requises
 
-#### 1. **Onglet Templates**
-- Sélectionnez un template (Facebook, Google, etc.)
-- Aperçu du site choisi
-- Informations sur le template
-
-#### 2. **Onglet Serveur**
-- Démarrage/arrêt du serveur
-- Configuration host/port
-- URL générée automatiquement
-- QR Code pour accès mobile
-
-#### 3. **Onglet Credentials**
-- Liste des victimes capturées
-- Informations détaillées (IP, navigateur, OS, localisation)
-- Export des données
-- Nettoyage des données
-
-#### 4. **Onglet Settings**
-- Configuration avancée
-- Auto-ouverture navigateur
-- Paramètres de sécurité
-
-## 📊 Fonctionnalités Avancées
-
-### 🎯 Capture Intelligente
-```
-✅ Email/Mot de passe
-✅ Adresse IP
-✅ Géolocalisation
-✅ Navigateur/OS
-✅ Capture webcam
-✅ Informations système
-✅ Timestamp précis
-```
-
-### 🌐 Templates Disponibles
-| Site | Catégorie | Statut |
-|------|-----------|--------|
-| Facebook | Social | ✅ |
-| Google | Search | ✅ |
-| Instagram | Social | ✅ |
-| Netflix | Entertainment | ✅ |
-| PayPal | Finance | ✅ |
-| Steam | Gaming | ✅ |
-| Twitter | Social | ✅ |
-| WhatsApp | Messaging | ✅ |
-| Amazon | Shopping | ✅ |
-| Apple ID | Tech | ✅ |
-| Microsoft | Tech | ✅ |
-| LinkedIn | Professional | ✅ |
-| GitHub | Tech | ✅ |
-| Dropbox | Storage | ✅ |
-| Spotify | Entertainment | ✅ |
-| Discord | Gaming | ✅ |
-
-## 🔧 Configuration
-
-### Variables d'Environnement
+#### Linux/macOS
 ```bash
-export PHISHING_HOST=0.0.0.0
-export PHISHING_PORT=8080
-export PHISHING_DEBUG=false
+# Pour les attaques WiFi (optionnel)
+sudo usermod -a -G netdev $USER
+# Redémarrez votre session
 ```
 
-### Fichiers de Configuration
-- `templates/` : Templates HTML
-- `captures/` : Images webcam
-- `logs/` : Fichiers de logs
-- `exports/` : Données exportées
+#### Windows
+- Exécutez en tant qu'administrateur pour les fonctionnalités avancées
 
-## 📈 Statistiques
+## 🔧 Fonctionnalités
 
-### Métriques Collectées
-- **Victimes capturées** : Nombre total
-- **Taux de succès** : Pourcentage de victimes
-- **Géolocalisation** : Répartition géographique
-- **Navigateurs** : Types de navigateurs utilisés
-- **Systèmes** : OS des victimes
+### 🎣 Phishing
+- Templates personnalisables
+- Clonage de sites web
+- Gestion des tunnels (ngrok, Cloudflare)
+- Capture automatique des credentials
 
-### Export des Données
+### 📡 Attaques WiFi
+- Scan des réseaux
+- Attaques de désauthentification
+- Capture de handshake WPA/WPA2
+- Crack de mots de passe
+- Points d'accès factices
+- Attaques Evil Twin
+- Attaques WPS
+
+### 🌐 Réseau
+- Scan de ports (nmap, masscan)
+- Énumération de services
+- Scan de vulnérabilités
+- Énumération DNS/subdomaines
+
+### 🚪 Backdoors
+- Windows Registry/Service
+- Linux Cron/Service
+- Persistence avancée
+- Rootkits
+
+### 💣 Exploits Avancés
+- Exploits personnalisés
+- Escalade de privilèges
+- Virus polymorphes
+- Buffer overflow
+- ROP chains
+
+### 🎭 Ingénierie Sociale
+- Campagnes de phishing
+- Scénarios de prétexte
+- Scripts de vishing
+- Opérations furtives
+
+### 🦠 Malware
+- Keyloggers
+- Ransomware
+- Cryptominers
+- Rootkits avancés
+
+### 🔍 OSINT
+- Énumération de sous-domaines
+- Harvesting d'emails
+- OSINT réseaux sociaux
+- Monitoring de certificats
+
+### 🏢 Active Directory
+- Attaques Kerberos
+- BloodHound
+- Mouvement latéral
+- Escalade de privilèges AD
+
+## 🛠️ Dépannage
+
+### Erreurs Communes
+
+#### "Permission denied"
 ```bash
-# Export JSON
-python3 -c "import json; print(json.dumps(credentials, indent=2))"
+# Linux/macOS
+sudo python ultimate_phishing_gui.py
 
-# Export CSV
-python3 -c "import csv; ..."
-
-# Export Excel
-python3 -c "import pandas; ..."
+# Windows
+# Exécutez en tant qu'administrateur
 ```
 
-## 🛡️ Sécurité
-
-### ⚠️ Avertissements
-- **Usage éthique uniquement** : Tests de sécurité autorisés
-- **Consentement requis** : Informer les participants
-- **Légalité** : Respecter les lois locales
-- **Responsabilité** : L'utilisateur est responsable
-
-### 🔒 Bonnes Pratiques
-- Utiliser uniquement pour des tests autorisés
-- Documenter les tests effectués
-- Supprimer les données après usage
-- Respecter la vie privée
-
-## 🐛 Dépannage
-
-### Problèmes Courants
-
-#### Serveur ne démarre pas
+#### "aircrack-ng not found"
 ```bash
-# Vérifier le port
-netstat -tulpn | grep :8080
+# Debian/Ubuntu
+sudo apt-get install aircrack-ng
 
-# Changer le port
-python3 phishing_tool.py --port 8081
+# macOS
+brew install aircrack-ng
+
+# Windows
+# Téléchargez depuis https://www.aircrack-ng.org/
 ```
 
-#### Webcam non détectée
+#### "nmap not found"
 ```bash
-# Vérifier les permissions
-ls -la /dev/video*
+# Debian/Ubuntu
+sudo apt-get install nmap
 
-# Installer opencv
-pip install opencv-python
+# macOS
+brew install nmap
+
+# Windows
+# Téléchargez depuis https://nmap.org/download.html
 ```
 
-#### Dépendances manquantes
+#### Erreurs de modules Python
 ```bash
 # Réinstaller les dépendances
-pip install -r requirements.txt --force-reinstall
+pip install -r requirements.txt
+
+# Ou utiliser le script d'installation
+bash install.sh  # Linux/macOS
+install.bat      # Windows
 ```
 
-## 📝 Changelog
+### Vérification de l'Installation
 
-### v2.0 - BlackEye + CamPhish Enhanced
-- ✅ Ajout de 8 nouveaux templates BlackEye
-- ✅ Intégration CamPhish (capture webcam)
-- ✅ Géolocalisation avancée
-- ✅ Détection navigateur/OS
-- ✅ Interface moderne
-- ✅ Notifications temps réel
-- ✅ Export avancé
+```bash
+# Tester l'application
+python -c "from ultimate_phishing_gui import UltimatePhishingGUI; print('✅ Installation OK')"
 
-### v1.0 - Version Initiale
-- ✅ Templates de base
-- ✅ Interface graphique
-- ✅ Capture de credentials
-- ✅ Serveur Flask
+# Vérifier les outils
+aircrack-ng --version
+nmap --version
+```
+
+## 📁 Structure du Projet
+
+```
+WifiDestructor2/
+├── ultimate_phishing_gui.py    # Interface principale
+├── install.sh                  # Script d'installation Linux/macOS
+├── install.bat                 # Script d'installation Windows
+├── requirements.txt            # Dépendances Python
+├── core/                       # Modules de base
+│   ├── phishing_core.py
+│   ├── wifi_attacks.py
+│   ├── network_scanner.py
+│   └── ...
+├── templates/                  # Templates de phishing
+├── logs/                       # Logs d'activité
+├── payloads/                   # Payloads générés
+├── backdoors/                  # Backdoors créés
+├── exploits/                   # Exploits générés
+├── captures/                   # Captures WiFi
+└── config/                     # Configuration
+```
+
+## ⚠️ Avertissement Légal
+
+**⚠️ ATTENTION: Cet outil est destiné UNIQUEMENT à des fins éducatives et de test de pénétration autorisées.**
+
+- Utilisez uniquement sur vos propres systèmes ou avec autorisation explicite
+- Respectez les lois locales sur la cybersécurité
+- Les auteurs ne sont pas responsables de l'utilisation malveillante
+- Testez toujours dans un environnement contrôlé
 
 ## 🤝 Contribution
 
-### Comment Contribuer
-1. Fork le projet
-2. Créer une branche feature
-3. Commiter les changements
-4. Pousser vers la branche
-5. Créer une Pull Request
-
-### Standards de Code
-- PEP 8 pour Python
-- Commentaires en français
-- Documentation complète
-- Tests unitaires
+Les contributions sont les bienvenues ! N'hésitez pas à :
+- Signaler des bugs
+- Proposer des améliorations
+- Ajouter de nouvelles fonctionnalités
+- Améliorer la documentation
 
 ## 📄 Licence
 
-Ce projet est sous licence MIT. Voir le fichier `LICENSE` pour plus de détails.
+Ce projet est sous licence MIT. Voir le fichier LICENSE pour plus de détails.
 
-## ⚖️ Avertissement Légal
+## 🆘 Support
 
-**ATTENTION** : Cet outil est destiné uniquement à des fins éducatives et de test de sécurité autorisés. L'utilisation de cet outil pour des activités malveillantes est strictement interdite. Les développeurs ne sont pas responsables de l'utilisation abusive de cet outil.
-
-## 📞 Support
-
-- **Issues** : GitHub Issues
-- **Discussions** : GitHub Discussions
-- **Email** : support@phishing-tool.com
+Pour obtenir de l'aide :
+1. Consultez ce README
+2. Vérifiez les logs dans le dossier `logs/`
+3. Exécutez `bash install.sh` pour réparer l'installation
+4. Ouvrez une issue sur GitHub
 
 ---
 
-**🎯 Phishing Tool Pro v2.0 - Plus fort et plus rapide que jamais !** 
+**🎣 ULTIMATE PHISHING TOOL v4.0 - Cross-Platform Pentesting GUI** 
