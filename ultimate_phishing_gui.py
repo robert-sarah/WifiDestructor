@@ -24,53 +24,137 @@ def check_system_dependencies():
     """Vérifie les dépendances système selon l'OS"""
     os_type = platform.system().lower()
     missing_tools = []
+    optional_tools = []
     
-    # Outils requis selon l'OS
-    required_tools = {
-        'linux': ['aircrack-ng', 'nmap', 'masscan'],
-        'darwin': ['aircrack-ng', 'nmap', 'masscan'],  # macOS
-        'windows': ['nmap']  # Windows a des limitations pour aircrack-ng
+    # Outils CRITIQUES selon l'OS (nécessaires pour le bon fonctionnement)
+    critical_tools = {
+        'linux': ['nmap'],  # Seul nmap est critique
+        'darwin': ['nmap'],  # macOS - seul nmap est critique
+        'windows': ['nmap']  # Windows - seul nmap est critique
     }
     
-    tools_to_check = required_tools.get(os_type, [])
+    # Outils OPTIONNELS selon l'OS (améliorent les fonctionnalités)
+    optional_tools_list = {
+        'linux': ['aircrack-ng', 'masscan'],
+        'darwin': ['aircrack-ng', 'masscan'],
+        'windows': ['aircrack-ng', 'masscan']  # Optionnel sur Windows
+    }
     
-    for tool in tools_to_check:
-        try:
-            subprocess.run([tool, '--version'], 
-                         capture_output=True, check=True, timeout=5)
-            print(f"✅ {tool} disponible")
-        except (subprocess.CalledProcessError, FileNotFoundError, subprocess.TimeoutExpired):
+    critical_to_check = critical_tools.get(os_type, [])
+    optional_to_check = optional_tools_list.get(os_type, [])
+    
+    print("🔍 Vérification des outils critiques...")
+    
+    # Vérifier les outils critiques
+    for tool in critical_to_check:
+        if check_tool_availability(tool, "critique"):
+            pass  # Outil disponible
+        else:
             missing_tools.append(tool)
-            print(f"❌ {tool} manquant")
     
-    return missing_tools
+    print("\n🔍 Vérification des outils optionnels...")
+    
+    # Vérifier les outils optionnels
+    for tool in optional_to_check:
+        if check_tool_availability(tool, "optionnel"):
+            pass  # Outil disponible
+        else:
+            optional_tools.append(tool)
+    
+    # Afficher un résumé
+    if missing_tools:
+        print(f"\n⚠️ Outils critiques manquants: {', '.join(missing_tools)}")
+        print("💡 Ces outils sont nécessaires pour le bon fonctionnement")
+    else:
+        print("\n✅ Tous les outils critiques sont disponibles")
+    
+    if optional_tools:
+        print(f"📋 Outils optionnels non disponibles: {', '.join(optional_tools)}")
+        print("💡 Ces outils améliorent les fonctionnalités mais ne sont pas critiques")
+    
+    return missing_tools, optional_tools
+
+def check_tool_availability(tool, tool_type):
+    """Vérifie si un outil est disponible avec plusieurs méthodes"""
+    # Essayer différentes commandes de vérification
+    version_commands = [
+        [tool, '--version'],
+        [tool, '-V'],
+        [tool, '--help'],
+        [tool, 'version'],
+        [tool, '--v'],
+        [tool, '-h']
+    ]
+    
+    for cmd in version_commands:
+        try:
+            result = subprocess.run(cmd, 
+                                 capture_output=True, 
+                                 check=True, 
+                                 timeout=3)
+            print(f"✅ {tool} disponible ({tool_type})")
+            return True
+        except (subprocess.CalledProcessError, FileNotFoundError, subprocess.TimeoutExpired):
+            continue
+    
+    # Si aucune commande n'a fonctionné, essayer avec 'which' (Linux/macOS)
+    if platform.system().lower() in ['linux', 'darwin']:
+        try:
+            result = subprocess.run(['which', tool], 
+                                 capture_output=True, 
+                                 check=True, 
+                                 timeout=2)
+            print(f"✅ {tool} disponible ({tool_type})")
+            return True
+        except (subprocess.CalledProcessError, FileNotFoundError, subprocess.TimeoutExpired):
+            pass
+    
+    # Si aucune méthode n'a fonctionné
+    if tool_type == "critique":
+        print(f"❌ {tool} manquant (CRITIQUE)")
+    else:
+        print(f"⚠️ {tool} non disponible (optionnel)")
+    
+    return False
 
 def install_dependencies():
     """Installe les dépendances manquantes"""
     try:
         # Vérifier les dépendances système
-        missing_system = check_system_dependencies()
+        missing_critical, missing_optional = check_system_dependencies()
         
-        if missing_system:
-            print(f"⚠️ Outils système manquants: {', '.join(missing_system)}")
+        # Seulement signaler les outils critiques manquants
+        if missing_critical:
+            print(f"⚠️ Outils critiques manquants: {', '.join(missing_critical)}")
             print("📦 Installation des dépendances Python...")
         
         # Installer les dépendances Python
         subprocess.check_call([sys.executable, "-m", "pip", "install", "-r", "requirements.txt"])
         print("✅ Dépendances Python installées avec succès")
         
-        # Instructions pour les outils manquants
-        if missing_system:
+        # Instructions pour les outils critiques manquants
+        if missing_critical:
             os_type = platform.system().lower()
-            print("\n📋 Instructions d'installation des outils manquants:")
+            print("\n📋 Instructions d'installation des outils critiques:")
             
             if os_type in ['linux', 'darwin']:
-                print("  Debian/Ubuntu: sudo apt-get install aircrack-ng nmap masscan")
-                print("  macOS: brew install aircrack-ng nmap masscan")
+                print("  Debian/Ubuntu: sudo apt-get install nmap")
+                print("  macOS: brew install nmap")
             elif os_type == 'windows':
-                print("  Windows: Installez manuellement depuis les sites officiels")
-                print("  - nmap: https://nmap.org/download.html")
-                print("  - aircrack-ng: https://www.aircrack-ng.org/")
+                print("  Windows: Téléchargez nmap depuis https://nmap.org/download.html")
+        
+        # Instructions pour les outils optionnels (informatives seulement)
+        if missing_optional:
+            os_type = platform.system().lower()
+            print(f"\n📋 Outils optionnels non disponibles: {', '.join(missing_optional)}")
+            print("💡 Ces outils améliorent les fonctionnalités mais ne sont pas critiques")
+            
+            if os_type in ['linux', 'darwin']:
+                print("  Pour installer les outils optionnels:")
+                print("  Debian/Ubuntu: sudo apt-get install aircrack-ng masscan")
+                print("  macOS: brew install aircrack-ng masscan")
+            elif os_type == 'windows':
+                print("  Windows: Ces outils sont optionnels sur Windows")
         
     except Exception as e:
         print(f"❌ Erreur installation: {e}")
@@ -214,12 +298,17 @@ class UltimatePhishingGUI:
                 print(f"⚠️ Impossible de vérifier les permissions Windows: {e}")
         
         # Vérifier les dépendances système
-        missing_tools = check_system_dependencies()
-        if missing_tools:
-            print(f"⚠️ Outils manquants: {', '.join(missing_tools)}")
+        missing_critical, missing_optional = check_system_dependencies()
+        if missing_critical:
+            print(f"⚠️ Outils critiques manquants: {', '.join(missing_critical)}")
+            print("💡 Ces outils sont nécessaires pour le bon fonctionnement")
             print("💡 Exécutez 'bash install.sh' pour installer automatiquement")
         else:
-            print("✅ Tous les outils système sont disponibles")
+            print("✅ Tous les outils critiques sont disponibles")
+        
+        if missing_optional:
+            print(f"📋 Outils optionnels non disponibles: {', '.join(missing_optional)}")
+            print("💡 Ces outils améliorent les fonctionnalités mais ne sont pas critiques")
         
     def setup_styles(self):
         """Configure les styles modernes"""

@@ -219,47 +219,70 @@ install_python_dependencies() {
 check_security_tools() {
     print_status "Vérification des outils de sécurité..."
     
-    local missing_tools=()
+    local critical_tools=("nmap")
+    local optional_tools=("aircrack-ng" "masscan")
+    local missing_critical=()
+    local missing_optional=()
     
-    # Vérifier aircrack-ng
-    if ! command -v aircrack-ng &> /dev/null; then
-        missing_tools+=("aircrack-ng")
-    else
-        print_success "aircrack-ng ✓"
-    fi
+    # Vérifier les outils critiques
+    print_status "Vérification des outils critiques..."
+    for tool in "${critical_tools[@]}"; do
+        if command -v "$tool" &> /dev/null; then
+            print_success "$tool ✓ (critique)"
+        else
+            missing_critical+=("$tool")
+            print_error "$tool manquant (CRITIQUE)"
+        fi
+    done
     
-    # Vérifier nmap
-    if ! command -v nmap &> /dev/null; then
-        missing_tools+=("nmap")
-    else
-        print_success "nmap ✓"
-    fi
+    # Vérifier les outils optionnels
+    print_status "Vérification des outils optionnels..."
+    for tool in "${optional_tools[@]}"; do
+        if command -v "$tool" &> /dev/null; then
+            print_success "$tool ✓ (optionnel)"
+        else
+            missing_optional+=("$tool")
+            print_warning "$tool non disponible (optionnel)"
+        fi
+    done
     
-    # Vérifier masscan
-    if ! command -v masscan &> /dev/null; then
-        missing_tools+=("masscan")
-    else
-        print_success "masscan ✓"
-    fi
-    
-    # Afficher les outils manquants
-    if [ ${#missing_tools[@]} -ne 0 ]; then
-        print_warning "Outils manquants: ${missing_tools[*]}"
-        print_status "Installation des outils manquants..."
+    # Installer seulement les outils critiques manquants
+    if [ ${#missing_critical[@]} -ne 0 ]; then
+        print_warning "Outils critiques manquants: ${missing_critical[*]}"
+        print_status "Installation des outils critiques..."
         
         case $OS in
             "debian"|"ubuntu")
-                for tool in "${missing_tools[@]}"; do
+                for tool in "${missing_critical[@]}"; do
                     sudo apt-get install -y "$tool"
                 done
                 ;;
             "macos")
-                for tool in "${missing_tools[@]}"; do
+                for tool in "${missing_critical[@]}"; do
                     brew install "$tool"
                 done
                 ;;
             *)
-                print_error "Installation manuelle requise pour: ${missing_tools[*]}"
+                print_error "Installation manuelle requise pour: ${missing_critical[*]}"
+                ;;
+        esac
+    else
+        print_success "Tous les outils critiques sont disponibles"
+    fi
+    
+    # Informer sur les outils optionnels
+    if [ ${#missing_optional[@]} -ne 0 ]; then
+        print_warning "Outils optionnels non disponibles: ${missing_optional[*]}"
+        print_status "Ces outils améliorent les fonctionnalités mais ne sont pas critiques"
+        
+        case $OS in
+            "debian"|"ubuntu")
+                print_status "Pour installer les outils optionnels:"
+                print_status "sudo apt-get install aircrack-ng masscan"
+                ;;
+            "macos")
+                print_status "Pour installer les outils optionnels:"
+                print_status "brew install aircrack-ng masscan"
                 ;;
         esac
     fi

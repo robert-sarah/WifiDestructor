@@ -84,22 +84,31 @@ echo ✅ Dossiers créés
 REM Vérifier les outils de sécurité
 echo 🔍 Vérification des outils de sécurité...
 
-REM Vérifier nmap
+REM Vérifier nmap (critique)
 nmap --version >nul 2>&1
 if %errorlevel% equ 0 (
-    echo ✅ nmap disponible
+    echo ✅ nmap disponible (critique)
 ) else (
-    echo ❌ nmap manquant
+    echo ❌ nmap manquant (CRITIQUE)
     echo 📦 Téléchargez nmap depuis https://nmap.org/download.html
 )
 
 REM Vérifier aircrack-ng (optionnel sur Windows)
 aircrack-ng --version >nul 2>&1
 if %errorlevel% equ 0 (
-    echo ✅ aircrack-ng disponible
+    echo ✅ aircrack-ng disponible (optionnel)
 ) else (
     echo ⚠️ aircrack-ng non disponible (optionnel sur Windows)
     echo 📦 Téléchargez depuis https://www.aircrack-ng.org/
+)
+
+REM Vérifier masscan (optionnel)
+masscan --version >nul 2>&1
+if %errorlevel% equ 0 (
+    echo ✅ masscan disponible (optionnel)
+) else (
+    echo ⚠️ masscan non disponible (optionnel)
+    echo 📦 Téléchargez depuis https://github.com/robertdavidgraham/masscan
 )
 
 REM Test de l'installation
